@@ -44,7 +44,7 @@ class PredictionResponse(BaseModel):
 
 
 
-@app.get('/')
+# @app.get('/')
 def greet():
     return{'message:Welcome to Mental Health Predictor'}
 top_countries=['Other','India','USA','Canada','Australia','UK','Germany','Mexico',
