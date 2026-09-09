@@ -4,6 +4,7 @@ from pydantic import BaseModel,Field
 from typing import Literal
 import pandas as pd
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 
 model=joblib.load('Mental_health_Model.pkl')
 app=FastAPI()
@@ -72,3 +73,5 @@ def predict(data:StudentData):
 
     prediction=model.predict(input_row)[0]
     return PredictionResponse(predicted_mental_health_score=round(float(prediction),2))
+
+app.mount("/", StaticFiles(directory="fronted/dist", html=True), name="frontend")
